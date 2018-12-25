@@ -1,0 +1,16 @@
+package org.kingempire.notebook;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+/**
+ *
+ * @author Anurag Singh
+ */
+@SpringBootApplication
+public class NotebookApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(NotebookApplication.class, args);
+    }
+}

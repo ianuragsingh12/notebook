@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"/>
+
+<body>
+    <div th:fragment="result-card">
+        <div th:if="${notes != null}" style="font-size: 15px;">
+            <span>Total document(s) found: </span>
+            <span th:text="${notescount}"></span>
+        </div><br/>
+        <div th:if="${notes != null}">
+            <div class="card" style="margin-bottom: 20px;" th:each="note, itr : ${notes}">
+                <h5 class="card-header" th:text="${note.title}"></h5>
+                <div class="card-body">
+                    <div class="author-details">
+                        <span>Author: </span><span th:text="${note.author}"></span>
+                    </div><br/>
+                    <pre><p th:text="${note.content}" class="card-text"></p></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

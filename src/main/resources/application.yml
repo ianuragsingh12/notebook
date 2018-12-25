@@ -1,0 +1,72 @@
+
+spring:
+    profiles:
+#        active: mongodb
+#        active: in_memory_mongodb
+        active: production
+    
+    thymeleaf:
+        cache: false
+        enabled: true
+        prefix: classpath:/templates/
+        suffix: .html
+        encoding: UTF-8
+        content-type: text/html
+        
+    jackson:
+        serialization.INDENT_OUTPUT: true
+
+api:
+    notes:
+        username: api_username
+        password: api_passwod
+        
+error:
+    debug: false
+
+
+##############################################################################
+---
+
+spring:
+    profiles: mongodb
+    data:
+        mongodb:
+            authentication-database: admin
+            database: your_db
+            port: 27017
+            host: localhost
+logging:
+    pattern:
+        console: "%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n"
+        file: "%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n"
+    level:
+        root: WARN
+        org.springframework.web: ERROR
+        org.kingempire.notebook: DEBUG
+    file: logs/application-mongodb.log
+
+---
+
+spring:
+    profiles: in_memory_mongodb
+    data:
+        mongodb:
+            database: your_db
+    level:
+        root: WARN
+        org.springframework.web: ERROR
+        org.kingempire.notebook: DEBUG
+
+---
+
+spring:
+    profiles: production
+    data:
+        mongodb:
+            uri: url_where_db_hosted
+    level:
+        root: WARN
+        org.springframework.web: ERROR
+        org.kingempire.notebook: WARN
+---
